@@ -21,3 +21,10 @@ INCLUDEPATH += "$$PWD/"
 
 
 
+QML2_IMPORT_PATH += \
+    "$$PWD/" \
+    "$$PWD/"
+
+QML_IMPORT_PATH += \
+    "$$PWD/" \
+    "$$PWD/"

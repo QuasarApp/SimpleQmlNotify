@@ -9,6 +9,9 @@ Item {
     readonly property var msg: model.notify
     readonly property var history: model.history
 
+    Metrix {
+        id: metrix
+    }
 
     NotificationForm {
         id: notyfyView

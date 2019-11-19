@@ -1,0 +1,5 @@
+module NotifyModule
+BasePopUp 1.0 BasePopUp.qml
+NotificationForm 1.0 NotificationForm.qml
+NotificationServiceView 1.0 NotificationServiceView.qml
+Metrix 1.0 Metrix.qml

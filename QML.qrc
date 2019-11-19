@@ -1,7 +1,9 @@
 <RCC>
-    <qresource prefix="/QmlNotyfy">
-        <file>NotificationServiceView.qml</file>
-        <file>NotificationForm.qml</file>
-        <file>BasePopUp.qml</file>
+    <qresource prefix="/">
+        <file>NotifyModule/qmldir</file>
+        <file>NotifyModule/NotificationServiceView.qml</file>
+        <file>NotifyModule/NotificationForm.qml</file>
+        <file>NotifyModule/BasePopUp.qml</file>
+        <file>NotifyModule/Metrix.qml</file>
     </qresource>
 </RCC>
