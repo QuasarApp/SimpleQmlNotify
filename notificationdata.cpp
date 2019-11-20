@@ -37,4 +37,8 @@ bool NotificationData::operator !=(const NotificationData &righ) {
 int NotificationData::type() const {
     return _type;
 }
+
+bool NotificationData::isValid() const {
+    return _text.size() || _title.size() || _img.size();
+}
 }

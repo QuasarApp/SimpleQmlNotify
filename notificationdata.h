@@ -37,6 +37,7 @@ public:
     Q_INVOKABLE QString img() const;
     Q_INVOKABLE QString title() const;
     Q_INVOKABLE int type() const;
+    Q_INVOKABLE bool isValid() const;
 
     bool operator ==(const NotificationData &righ);
     bool operator !=(const NotificationData &righ);

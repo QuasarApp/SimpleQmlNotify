@@ -28,6 +28,9 @@ Item {
     }
 
     onMsgChanged: {
-        notyfyView._show();
+
+        if (msg.isValid()) {
+            notyfyView._show();
+        }
     }
 }
