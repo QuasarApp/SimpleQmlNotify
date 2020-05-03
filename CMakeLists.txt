@@ -27,9 +27,7 @@ set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}" CACHE STRING "Qt Creator extra
 
 find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
-file(GLOB SOURCE_CPP
-    "*.cpp" "*.qrc"	
-)
+file(GLOB SOURCE_CPP "*.cpp" "*.qrc")
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_CPP})
 target_link_libraries(${PROJECT_NAME} PUBLIC Qt5::Core Qt5::Quick)
