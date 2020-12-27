@@ -25,12 +25,13 @@ set(QMLNOTYFYSERICE_LIBRARY ON)
 
 set(QML_IMPORT_PATH "${CMAKE_CURRENT_SOURCE_DIR}" CACHE STRING "Qt Creator extra qml import paths")
 
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
 file(GLOB SOURCE_CPP "*.cpp" "*.qrc")
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_CPP})
-target_link_libraries(${PROJECT_NAME} PUBLIC Qt5::Core Qt5::Quick)
+target_link_libraries(${PROJECT_NAME} PUBLIC Qt::Core Qt::Quick)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 setVersion(1 0 1)
