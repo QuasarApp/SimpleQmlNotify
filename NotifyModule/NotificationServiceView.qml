@@ -30,7 +30,7 @@ Item {
         x: parent.width - width - margin;
         y: margin;
 
-        width: 6 * metrix.controlPtMaterial;
+        width: 5 * metrix.pt;
         height: width * 0.5
     }
 

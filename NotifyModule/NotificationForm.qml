@@ -39,21 +39,9 @@ BasePopUp {
 
     backgroundColor: _getBackGraundColor(type);
 
-    Page {
-        id: page
-        anchors.fill: parent
-        spacing: 0
+    contentItem:
+        Item {
 
-        background: Rectangle {
-            color: "#00000000"
-        }
-
-        header: Label {
-            text: titleText
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        contentItem:
         RowLayout {
             id: rowLayout
             spacing: 5
@@ -86,6 +74,42 @@ BasePopUp {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
             }
+
+            anchors.fill: parent
+        }
+
+        MouseArea {
+            hoverEnabled: true
+            onEntered: {
+                autoclosePause();
+            }
+
+            onExited: {
+                autocloseResume();
+            }
+
+            onClicked: {
+
+                if (!autoClose) {
+                    close();
+                }
+
+                if (autoClosePasused) {
+                    autocloseResume()
+                } else {
+                    autoclosePause();
+                }
+            }
+
+            anchors.fill: parent
         }
     }
+
+
+    header: Label {
+        text: titleText
+        horizontalAlignment: Text.AlignHCenter
+    }
+
+
 }
