@@ -42,3 +42,6 @@ target_wrapper.*
 
 # QtCreator CMake
 CMakeLists.txt.user*
+CMakeFiles
+*_autogen
+cmake_install.cmake
