@@ -58,21 +58,17 @@ Dialog {
     }
 
     function autoclosePause() {
-        progressAnimation.pause();
+        if (autoClose)
+            progressAnimation.pause();
     }
 
     function autocloseResume() {
-        progressAnimation.resume();
-    }
-
-    onClosed: {
         if (autoClose)
-            opacity = 0;
+            progressAnimation.resume();
     }
 
     closePolicy: (!clickClose || autoClose)? Popup.NoAutoClose: Popup.CloseOnReleaseOutside
 
-    onRejected: close()
 
     footer: ProgressBar {
         id: progress;
@@ -80,7 +76,6 @@ Dialog {
         to: 100
         visible: autoClose
         value: 0;
-
 
         NumberAnimation on value {
 

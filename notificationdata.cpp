@@ -10,7 +10,7 @@ namespace QmlNotificationService {
 
 NotificationData::NotificationData(const QString &title,
                                    const QString &text,
-                                   const QString &img, Type type) {
+                                   const QString &img, int type) {
 
     _text = text;
     _title = title;

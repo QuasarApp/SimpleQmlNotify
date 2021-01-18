@@ -31,7 +31,7 @@ public:
     explicit NotificationData(const QString& title = "",
                               const QString& text = "",
                               const QString& img = "",
-                              Type type = Type::Normal);
+                              int type = Type::Normal);
 
     Q_INVOKABLE QString text() const;
     Q_INVOKABLE QString img() const;

@@ -18,6 +18,10 @@ NotificationData NotificationService::notify() const {
     return _notify;
 }
 
+NotificationData NotificationService::question() const {
+    return _question;
+}
+
 void NotificationService::setNotify(const NotificationData& notify) {
     if (_notify != notify)
         _history.push_back(_notify);
@@ -27,6 +31,16 @@ void NotificationService::setNotify(const NotificationData& notify) {
     emit notifyChanged();
 }
 
+void NotificationService::setQuestion(const NotificationData &question) {
+
+    _question = question;
+    emit questionChanged();
+}
+
+void NotificationService::questionComplete(bool accepted, int code) {
+    emit questionCompleted(accepted, code);
+}
+
 void NotificationService::setNotify(const QString &title,
                                     const QString &text,
                                     const QString &img,
@@ -34,6 +48,10 @@ void NotificationService::setNotify(const QString &title,
 
     setNotify(NotificationData(title, text, img,
                                static_cast<NotificationData::Type>(type)));
+}
+
+void NotificationService::setQuestion(const QString &title, const QString &text, const QString &img, int code) {
+    setQuestion(NotificationData(title, text, img, code));
 }
 
 NotificationService *NotificationService::getService() {

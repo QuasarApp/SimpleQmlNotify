@@ -5,15 +5,17 @@
  * of this license document, but changing it is not allowed.
 */
 
-import QtQuick 2.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Controls.Material 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.3
-import QtGraphicalEffects 1.12
+import QtGraphicalEffects 1.15
 
 Item {
     readonly property var model: notificationService;
     readonly property var msg: model.notify
+    readonly property var qst: model.question
+
     readonly property var history: model.history
 
     Metrix {
@@ -30,14 +32,46 @@ Item {
         x: parent.width - width - margin;
         y: margin;
 
-        width: 5 * metrix.pt;
+        width: 4 * metrix.pt;
         height: width * 0.5
+    }
+
+    YesNoQuestion {
+        id: questionMsgBox
+        titleText : qst.title;
+        text: (qst)? qst.text: "";
+        img: (qst)? qst.img: "";
+        type: 0;
+
+        x: parent.width / 2  - width / 2;
+        y: parent.height / 2 - height / 2;
+
+        width: 6 * metrix.pt;
+        height: width * 0.4
+
+        onAccepted: {
+            if (model) {
+                model.questionComplete(true, qst.type)
+            }
+        }
+
+        onRejected: {
+            if (model) {
+                model.questionComplete(false, qst.type)
+            }
+        }
     }
 
     onMsgChanged: {
 
         if (msg.isValid()) {
             notyfyView._show();
+        }
+    }
+
+    onQstChanged: {
+        if (qst.isValid()) {
+            questionMsgBox._show();
         }
     }
 }
