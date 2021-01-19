@@ -6,6 +6,8 @@ import QtQuick.Layouts 1.15
 NotificationForm {
     id: questionDialog
 
+    readonly property string defImg: "qrc:/icons/question"
+
     autoClose: false
     clickClose: false
 

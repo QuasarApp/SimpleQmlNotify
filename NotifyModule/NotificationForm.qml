@@ -18,15 +18,20 @@ BasePopUp {
     property string titleText: qsTr("Message")
     property int type: 0
 
-    function _getBackGraundColor(type) {
+    readonly property string defImgI: "qrc:/icons/info"
+    readonly property string defImgW: "qrc:/icons/warning"
+    readonly property string defImgE: "qrc:/icons/error"
+
+    function getDefaultImage(type) {
         switch(type) {
 
-        case 1: return "#FFC107"
-        case 2: return "#FF5722"
+        case 1: return defImgW
+        case 2: return defImgE
 
         }
 
-        return Material.background
+        return defImgI
+
     }
 
     autoClose: true;
@@ -37,7 +42,7 @@ BasePopUp {
     spacing: 0
 
 
-    backgroundColor: _getBackGraundColor(type);
+    backgroundColor: Material.background
 
     contentItem:
         Item {
@@ -105,9 +110,5 @@ BasePopUp {
         }
     }
 
-
-    header: Label {
-        text: titleText
-        horizontalAlignment: Text.AlignHCenter
-    }
+    title: titleText
 }

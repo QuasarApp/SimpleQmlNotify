@@ -26,7 +26,7 @@ Item {
         id: notyfyView
         titleText : msg.title;
         text: (msg)? msg.text: "";
-        img: (msg)? msg.img: "";
+        img: (msg && msg.img.length)? msg.img: getDefaultImage((msg)? msg.type: 0);
         type: (msg)? msg.type: 0;
 
         x: parent.width - width - margin;
@@ -40,7 +40,7 @@ Item {
         id: questionMsgBox
         titleText : qst.title;
         text: (qst)? qst.text: "";
-        img: (qst)? qst.img: "";
+        img: (qst && qst.img.length)? qst.img: defImg;
         type: 0;
 
         x: parent.width / 2  - width / 2;

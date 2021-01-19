@@ -7,4 +7,10 @@
         <file>NotifyModule/Metrix.qml</file>
         <file>NotifyModule/YesNoQuestion.qml</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file alias="warning">icons/Warning.png</file>
+        <file alias="question">icons/Question.png</file>
+        <file alias="info">icons/Info.png</file>
+        <file alias="error">icons/Error.png</file>
+    </qresource>
 </RCC>
