@@ -47,7 +47,7 @@ Item {
         y: parent.height / 2 - height / 2;
 
         width: 6 * metrix.pt;
-        height: width * 0.4
+        height: width * 0.45
 
         onAccepted: {
             if (model) {
