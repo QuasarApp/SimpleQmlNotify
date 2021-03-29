@@ -5,7 +5,8 @@
 namespace QmlNotificationService {
 
 /**
- * @brief The NotificationData class view data for NotificationServiceView
+ * @brief The NotificationData class view data for NotificationServiceView. This class contains a structure with notification data.
+
  */
 class NOTIFYSERVICESHARED_EXPORT NotificationData
 {
