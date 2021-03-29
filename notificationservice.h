@@ -8,7 +8,7 @@
 namespace QmlNotificationService {
 
 /**
- * @brief The NotificationService class.
+ * @brief The NotificationService class. This class used for working with notify.
  */
 class NOTIFYSERVICESHARED_EXPORT NotificationService: public QObject
 {
@@ -21,7 +21,7 @@ class NOTIFYSERVICESHARED_EXPORT NotificationService: public QObject
 
 public:
     /**
-     * @brief Notify
+     * @brief Notify.
      * @return notyfyData for qml.
      */
     NotificationData notify() const;
@@ -48,13 +48,13 @@ public:
 
 
     /**
-     * @brief getService
-     * @return pointer to oservice.
+     * @brief getService - This method return instance to notify service. 
+     * @return pointer to service.
      */
     static NotificationService* getService();
 
     /**
-     * @brief history
+     * @brief history - This method used for return notify list.
      * @return list of all notify.
      */
     const QList<NotificationData> & history() const;
