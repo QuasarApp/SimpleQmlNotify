@@ -35,3 +35,5 @@ target_link_libraries(${PROJECT_NAME} PUBLIC Qt::Core Qt::Quick)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 setVersion(1 0 1)
+
+initAll()
