@@ -48,4 +48,8 @@ int NotificationData::type() const {
 bool NotificationData::isValid() const {
     return _text.size() || _title.size() || _img.size();
 }
+
+void NotificationData::setCode(int code) {
+    _type = code;
+}
 }

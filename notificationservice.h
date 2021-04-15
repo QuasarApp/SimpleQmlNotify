@@ -41,8 +41,9 @@ public:
     /**
      * @brief setQuestion This method sets information of the users question.
      * @param question are data of the question.
+     * @return return question code. You must be save this code for check ansver of your qestion.
      */
-    void setQuestion(const NotificationData& question);
+    int setQuestion(const NotificationData& question);
 
     /**
      * @brief questionComplete This method is main responce method of the users questions.

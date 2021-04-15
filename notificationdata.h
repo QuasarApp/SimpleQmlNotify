@@ -70,6 +70,12 @@ public:
      */
     Q_INVOKABLE bool isValid() const;
 
+    /**
+     * @brief setCode This method sets new code of the question.
+     * @param code are new value of the code.
+     */
+    void setCode(int code);
+
     bool operator ==(const NotificationData &righ);
     bool operator !=(const NotificationData &righ);
 

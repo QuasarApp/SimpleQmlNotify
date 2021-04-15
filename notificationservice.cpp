@@ -31,10 +31,13 @@ void NotificationService::setNotify(const NotificationData& notify) {
     emit notifyChanged();
 }
 
-void NotificationService::setQuestion(const NotificationData &question) {
+int NotificationService::setQuestion(const NotificationData &question) {
 
     _question = question;
+    _question.setCode(rand() % std::numeric_limits<int>().max());
     emit questionChanged();
+
+    return _question.type();
 }
 
 void NotificationService::questionComplete(bool accepted, int code) {
