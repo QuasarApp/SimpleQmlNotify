@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018-2020 QuasarApp.
+ * Copyright (C) 2018-2021 QuasarApp.
  * Distributed under the lgplv3 software license, see the accompanying
  * Everyone is permitted to copy and distribute verbatim copies
  * of this license document, but changing it is not allowed.
@@ -10,7 +10,7 @@ namespace QmlNotificationService {
 
 NotificationData::NotificationData(const QString &title,
                                    const QString &text,
-                                   const QString &img, Type type) {
+                                   const QString &img, int type) {
 
     _text = text;
     _title = title;
@@ -47,5 +47,9 @@ int NotificationData::type() const {
 
 bool NotificationData::isValid() const {
     return _text.size() || _title.size() || _img.size();
+}
+
+void NotificationData::setCode(int code) {
+    _type = code;
 }
 }

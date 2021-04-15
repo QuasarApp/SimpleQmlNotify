@@ -1,13 +1,13 @@
 /*
- * Copyright (C) 2018-2020 QuasarApp.
+ * Copyright (C) 2018-2021 QuasarApp.
  * Distributed under the lgplv3 software license, see the accompanying
  * Everyone is permitted to copy and distribute verbatim copies
  * of this license document, but changing it is not allowed.
 */
 
-import QtQuick 2.11
-import QtQuick.Controls 2.3
-import QtQuick.Controls.Material 2.0
+import QtQuick 2.15
+import QtQuick.Controls 2.5
+import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.3
 
 BasePopUp {
@@ -18,15 +18,20 @@ BasePopUp {
     property string titleText: qsTr("Message")
     property int type: 0
 
-    function _getBackGraundColor(type) {
+    readonly property string defImgI: "qrc:/icons/info"
+    readonly property string defImgW: "qrc:/icons/warning"
+    readonly property string defImgE: "qrc:/icons/error"
+
+    function getDefaultImage(type) {
         switch(type) {
 
-        case 1: return "#FFC107"
-        case 2: return "#FF5722"
+        case 1: return defImgW
+        case 2: return defImgE
 
         }
 
-        return Material.background
+        return defImgI
+
     }
 
     autoClose: true;
@@ -37,23 +42,11 @@ BasePopUp {
     spacing: 0
 
 
-    backgroundColor: _getBackGraundColor(type);
+    backgroundColor: Material.background
 
-    Page {
-        id: page
-        anchors.fill: parent
-        spacing: 0
+    contentItem:
+        Item {
 
-        background: Rectangle {
-            color: "#00000000"
-        }
-
-        header: Label {
-            text: titleText
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        contentItem:
         RowLayout {
             id: rowLayout
             spacing: 5
@@ -86,6 +79,36 @@ BasePopUp {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
             }
+
+            anchors.fill: parent
+        }
+
+        MouseArea {
+            hoverEnabled: true
+            onEntered: {
+                autoclosePause();
+            }
+
+            onExited: {
+                autocloseResume();
+            }
+
+            onClicked: {
+
+                if (!autoClose) {
+                    close();
+                }
+
+                if (autoClosePasused) {
+                    autocloseResume()
+                } else {
+                    autoclosePause();
+                }
+            }
+
+            anchors.fill: parent
         }
     }
+
+    title: titleText
 }
