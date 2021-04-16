@@ -24,7 +24,7 @@ class QQmlApplicationEngine;
  * @endcode
  * Questions
  * CPP
- * @code cpp
+ * @code{cpp}
  #include <qmlnotifyservice.h>
 
  int main() {
@@ -43,7 +43,7 @@ class QQmlApplicationEngine;
  }
  * @endcode
  * QML
- * @code qml
+ * @code{qml}
   NotificationServiceView {
      anchors.fill: parent;
  }
