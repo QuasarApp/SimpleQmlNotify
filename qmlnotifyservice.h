@@ -9,7 +9,7 @@ class QQmlApplicationEngine;
 /**
  * Simple notify service for qml.
  * Use :
- * @code cpp 
+ * @code{cpp} 
  * #include <qmlnotifyservice.h>
  * QmlNotificationService::init();
  * auto service = QmlNotificationService::NotificationService::getService()
