@@ -17,7 +17,7 @@ class QQmlApplicationEngine;
  * @endcode 
  *
  * in qml :
- * @code cpp 
+ * @code qml 
  *  NotificationServiceView {
         anchors.fill: parent;
     }
