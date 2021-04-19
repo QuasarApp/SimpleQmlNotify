@@ -42,7 +42,7 @@ Simple Qml notification service for qml applications.
 
 ### Notification
 
-### CPP
+#### CPP
 ``` cpp
  #include <qmlnotifyservice.h>
 
@@ -55,7 +55,7 @@ Simple Qml notification service for qml applications.
 
 ```
 
-### QML
+#### QML
 
 ``` qml
 
@@ -68,7 +68,7 @@ Simple Qml notification service for qml applications.
 ### Questions
 
 
-### CPP
+#### CPP
 ``` cpp
  #include <qmlnotifyservice.h>
 
@@ -90,7 +90,7 @@ Simple Qml notification service for qml applications.
 
 ```
 
-### QML
+#### QML
 
 ``` qml
 
