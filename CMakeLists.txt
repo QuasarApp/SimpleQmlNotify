@@ -6,14 +6,11 @@
 #
 
 cmake_minimum_required(VERSION 3.5)
-include(CMake/crossplatform/crossplatform.cmake)
 
 project(QmlNotyfyService LANGUAGES CXX)
 
-include(CMake/ProjectOut.cmake)
-include(CMake/ccache.cmake)
+include(CMake/QuasarApp.cmake)
 include(CMake/Version.cmake)
-include(CMake/QuasarAppCITargets.cmake)
 
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
