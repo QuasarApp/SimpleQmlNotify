@@ -71,7 +71,7 @@ public:
      * @param img are url to image of a queston window.
      * @param code are code of question. This code must be sendet to the questionComplete method after buttons clik.
      */
-    Q_INVOKABLE void setQuestion(const QString& title = "",
+    Q_INVOKABLE int setQuestion(const QString& title = "",
                        const QString& text = "",
                        const QString& img = "",
                        int code = 0);

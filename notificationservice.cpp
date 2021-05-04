@@ -53,8 +53,8 @@ void NotificationService::setNotify(const QString &title,
                                static_cast<NotificationData::Type>(type)));
 }
 
-void NotificationService::setQuestion(const QString &title, const QString &text, const QString &img, int code) {
-    setQuestion(NotificationData(title, text, img, code));
+int NotificationService::setQuestion(const QString &title, const QString &text, const QString &img, int code) {
+    return setQuestion(NotificationData(title, text, img, code));
 }
 
 NotificationService *NotificationService::getService() {
