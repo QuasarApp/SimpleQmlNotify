@@ -28,9 +28,18 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
 file(GLOB SOURCE_CPP "*.cpp" "*.qrc")
 
-add_library(${PROJECT_NAME} SHARED ${SOURCE_CPP})
+add_library(${PROJECT_NAME} ${SOURCE_CPP})
 target_link_libraries(${PROJECT_NAME} PUBLIC Qt::Core Qt::Quick)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+set(LANGS ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/en.ts
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/ru.ts
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/ja.ts
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/tr.ts
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/ua.ts)
+
+
+prepareQM( ${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR} "${LANGS}")
 
 setVersion(1 0 1)
 
