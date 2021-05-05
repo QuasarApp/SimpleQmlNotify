@@ -20,9 +20,7 @@ Item {
     readonly property real gamePt: (width < height) ? width / pointCount : height / pointCount;
 
     function getfactor(dsm) {
-        if (dsm < 30) {
-            return 0.5
-        } else if ( dsm < 70) {
+        if ( dsm < 70) {
             return 1
         } else if (dsm < 140) {
             return 2;
