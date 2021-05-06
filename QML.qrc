@@ -6,11 +6,11 @@
         <file>NotifyModule/BasePopUp.qml</file>
         <file>NotifyModule/Metrix.qml</file>
         <file>NotifyModule/YesNoQuestion.qml</file>
-        <file>qmlNotify_languages/ua.qm</file>
         <file>qmlNotify_languages/tr.qm</file>
         <file>qmlNotify_languages/ru.qm</file>
         <file>qmlNotify_languages/ja.qm</file>
         <file>qmlNotify_languages/en.qm</file>
+        <file>qmlNotify_languages/uk.qm</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="warning">icons/Warning.png</file>
