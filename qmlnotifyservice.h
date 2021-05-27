@@ -5,6 +5,7 @@
 #include "notificationservice.h"
 
 class QQmlApplicationEngine;
+inline void initSNotufyResources() { Q_INIT_RESOURCE(NotifyModule); }
 
 /**
  * Simple notify service for qml.

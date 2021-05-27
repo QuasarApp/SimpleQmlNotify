@@ -58,6 +58,7 @@ Simple Qml notification service for qml applications.
 #### QML
 
 ```qml
+ import NotifyModule 1.0
 
  NotificationServiceView {
      anchors.fill: parent;
@@ -93,7 +94,8 @@ Simple Qml notification service for qml applications.
 #### QML
 
 ```qml
-
+ import NotifyModule 1.0
+ 
  NotificationServiceView {
      anchors.fill: parent;
  }
