@@ -34,10 +34,14 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(LANGS ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/en.ts
           ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/ru.ts
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/uk.ts
           ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/ja.ts
           ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/tr.ts
-          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/uk.ts)
-
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/zh.ts
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/de.ts
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/fr.ts
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/es.ts
+          ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/pl.ts)
 
 prepareQM( ${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR} "${LANGS}")
 
