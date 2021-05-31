@@ -4,8 +4,6 @@
 <context>
     <name>NotificationForm</name>
     <message>
-        <location filename="../NotifyModule/NotificationForm.qml" line="16"/>
-        <location filename="../NotifyModule/NotificationForm.qml" line="18"/>
         <source>Message</source>
         <translation>İleti</translation>
     </message>
