@@ -16,11 +16,6 @@ class NOTIFYSERVICESHARED_EXPORT NotificationData
     Q_PROPERTY(QString title READ title)
     Q_PROPERTY(int type READ type)
 
-    QString _text;
-    QString _img;
-    QString _title;
-    int _type;
-
 public:
 
     /**
@@ -78,6 +73,12 @@ public:
 
     bool operator ==(const NotificationData &righ);
     bool operator !=(const NotificationData &righ);
+
+private:
+    QString _text;
+    QString _img;
+    QString _title;
+    int _type;
 
 };
 }

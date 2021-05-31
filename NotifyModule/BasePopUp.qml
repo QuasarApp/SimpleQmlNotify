@@ -9,7 +9,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.3
-import QtGraphicalEffects 1.15
 
 Dialog {
     id : basePopup
@@ -37,14 +36,6 @@ Dialog {
             id: backCorner
             color: backgroundColor
             radius: metrix.mm
-        }
-
-        DropShadow {
-            anchors.fill: parent
-            source: backCorner
-            color: "#80000000"
-            verticalOffset: 10
-            samples: 30
         }
     }
 

@@ -9,7 +9,6 @@ import QtQuick 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.3
-import QtGraphicalEffects 1.15
 
 Item {
     readonly property var model: notificationService;
@@ -24,10 +23,10 @@ Item {
 
     NotificationForm {
         id: notyfyView
-        titleText : msg.title;
-        text: (msg)? msg.text: "";
-        img: (msg && msg.img.length)? msg.img: getDefaultImage((msg)? msg.type: 0);
-        type: (msg)? msg.type: 0;
+        titleText : msg.title();
+        text: (msg)? msg.text(): "";
+        img: (msg && msg.img().length)? msg.img(): getDefaultImage((msg)? msg.type(): 0);
+        type: (msg)? msg.type(): 0;
 
         x: parent.width - width - margin;
         y: margin;
@@ -38,9 +37,9 @@ Item {
 
     YesNoQuestion {
         id: questionMsgBox
-        titleText : qst.title;
-        text: (qst)? qst.text: "";
-        img: (qst && qst.img.length)? qst.img: defImg;
+        titleText : qst.title();
+        text: (qst)? qst.text(): "";
+        img: (qst && qst.img().length)? qst.img(): defImg;
         type: 0;
 
         x: parent.width / 2  - width / 2;
@@ -51,13 +50,13 @@ Item {
 
         onAccepted: {
             if (model) {
-                model.questionComplete(true, qst.type)
+                model.questionComplete(true, qst.type())
             }
         }
 
         onRejected: {
             if (model) {
-                model.questionComplete(false, qst.type)
+                model.questionComplete(false, qst.type())
             }
         }
     }
