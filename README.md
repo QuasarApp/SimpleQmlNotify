@@ -9,7 +9,7 @@ Simple Qml notification service for qml applications.
  * git submodule add https://github.com/QuasarApp/SimpleQmlNotify.git # add the repository of QSimpleQmlNotify into your repo like submodule
  * git submodule update --init --recursive
  * Include in your pro file the pri file of Qt-Secret library
-  ``` qmake
+  ```qmake
     include($$PWD/SimpleQmlNotify/QmlNotify.pri)
   ```
  * Rebuild yuor project
@@ -21,7 +21,7 @@ Simple Qml notification service for qml applications.
  * git submodule add https://github.com/QuasarApp/SimpleQmlNotify.git # add the repository of QSimpleQmlNotify into your repo like submodule
  * git submodule update --init --recursive
  * Include in your CMakeLists.txt file the main CMakeLists.txt file of QSimpleQmlNotify library
-  ``` cmake
+  ```cmake
     include(QmlNotyfyService)
   ```
  * Rebuild yuor project
@@ -43,7 +43,7 @@ Simple Qml notification service for qml applications.
 ### Notification
 
 #### CPP
-``` cpp
+```cpp
  #include <qmlnotifyservice.h>
 
  int main() {
@@ -57,7 +57,8 @@ Simple Qml notification service for qml applications.
 
 #### QML
 
-``` qml
+```qml
+ import NotifyModule 1.0
 
  NotificationServiceView {
      anchors.fill: parent;
@@ -69,7 +70,7 @@ Simple Qml notification service for qml applications.
 
 
 #### CPP
-``` cpp
+```cpp
  #include <qmlnotifyservice.h>
 
  int main() {
@@ -92,8 +93,9 @@ Simple Qml notification service for qml applications.
 
 #### QML
 
-``` qml
-
+```qml
+ import NotifyModule 1.0
+ 
  NotificationServiceView {
      anchors.fill: parent;
  }

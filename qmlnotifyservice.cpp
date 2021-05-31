@@ -21,6 +21,8 @@ bool init(QQmlApplicationEngine *engine) {
     if (!root)
         return false;
 
+    initSNotufyResources();
+
     engine->addImportPath(":/");
 
     root->setContextProperty("notificationService", NotificationService::getService());

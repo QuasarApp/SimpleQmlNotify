@@ -11,6 +11,11 @@
         <file>qmlNotify_languages/ja.qm</file>
         <file>qmlNotify_languages/en.qm</file>
         <file>qmlNotify_languages/uk.qm</file>
+        <file>qmlNotify_languages/pl.qm</file>
+        <file>qmlNotify_languages/es.qm</file>
+        <file>qmlNotify_languages/fr.qm</file>
+        <file>qmlNotify_languages/de.qm</file>
+        <file>qmlNotify_languages/zh.qm</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="warning">icons/Warning.png</file>
