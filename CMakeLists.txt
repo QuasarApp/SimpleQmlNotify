@@ -23,7 +23,9 @@ add_definitions(-DQMLNOTYFYSERICE_LIBRARY)
 
 set(QML_IMPORT_PATH ${QML_IMPORT_PATH} "${CMAKE_CURRENT_SOURCE_DIR}" CACHE STRING "" FORCE)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick QuickControls2 REQUIRED)
+if (NOT DEFINED QT_VERSION_MAJOR)
+    find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick QuickControls2 REQUIRED)
+endif()
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick QuickControls2 REQUIRED)
 
 file(GLOB SOURCE_CPP "*.cpp" "*.qrc")
