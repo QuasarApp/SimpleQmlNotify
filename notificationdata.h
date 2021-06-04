@@ -11,10 +11,6 @@ namespace QmlNotificationService {
 class NOTIFYSERVICESHARED_EXPORT NotificationData
 {
     Q_GADGET
-    Q_PROPERTY(QString text READ text)
-    Q_PROPERTY(QString img READ img)
-    Q_PROPERTY(QString title READ title)
-    Q_PROPERTY(int type READ type)
 
 public:
 
