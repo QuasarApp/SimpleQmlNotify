@@ -12,10 +12,6 @@ import QtQuick.Layouts 1.3
 
 Dialog {
     id : basePopup
-    width: 200
-    height: 100
-    x: 0
-    y: 0
 
     transformOrigin: Item.Center
 

@@ -3,9 +3,15 @@
 
 #include "notificationdata.h"
 
+#include <QHash>
 #include <QObject>
 
 namespace QmlNotificationService {
+
+/**
+ * @brief Listner This is listner lyambda function of user ansver. This function has next signature: void(bool accept)
+ */
+using Listner = std::function<void(bool accept)>;
 
 /**
  * @brief The NotificationService class. This class used for working with notify.
@@ -40,10 +46,11 @@ public:
 
     /**
      * @brief setQuestion This method sets information of the users question.
+     * @param listner This is listner lyambda function.
      * @param question are data of the question.
      * @return return question code. You must be save this code for check ansver of your qestion.
      */
-    int setQuestion(const NotificationData& question);
+    int setQuestion(const Listner &listner, const NotificationData& question);
 
     /**
      * @brief questionComplete This method is main responce method of the users questions.
@@ -60,21 +67,39 @@ public:
      * @param type are code of a notification type. For more information about notification type see the NotificationData enum.
      */
     Q_INVOKABLE void setNotify(const QString& title = "",
-                       const QString& text = "",
-                       const QString& img = "",
-                       int type = NotificationData::Normal);
+                               const QString& text = "",
+                               const QString& img = "",
+                               int type = NotificationData::Normal);
 
     /**
      * @brief setQuestion This method set new question for user. When question changed on main application windows shows question.
+     * @param listnerObject This is qml object with listner function.
+     * @param listnerMethod This is listner method name. Method signature : void(bool)
      * @param title are title of a question window.
      * @param text are text value of a question window.
      * @param img are url to image of a queston window.
      * @param code are code of question. This code must be sendet to the questionComplete method after buttons clik.
      */
-    Q_INVOKABLE int setQuestion(const QString& title = "",
-                       const QString& text = "",
-                       const QString& img = "",
-                       int code = 0);
+    Q_INVOKABLE int setQuestion(QObject *listnerObject,
+                                const QString &listnerMethod,
+                                const QString& title = "",
+                                const QString& text = "",
+                                const QString& img = "",
+                                int code = 0);
+
+    /**
+     * @brief setQuestion This method set new question for user. When question changed on main application windows shows question.
+     * @param listner This is listner lyambda function.
+     * @param title are title of a question window.
+     * @param text are text value of a question window.
+     * @param img are url to image of a queston window.
+     * @param code are code of question. This code must be sendet to the questionComplete method after buttons clik.
+     */
+    int setQuestion(const Listner &listner,
+                                const QString& title = "",
+                                const QString& text = "",
+                                const QString& img = "",
+                                int code = 0);
 
 
     /**
@@ -109,8 +134,10 @@ signals:
     void questionCompleted(bool accepted, int questionCode);
 
 private:
+
     explicit NotificationService(QObject *ptr = nullptr);
 
+    QHash<int, Listner> _listners;
     NotificationData _question;
     NotificationData _notify;
     QList<NotificationData> _history;

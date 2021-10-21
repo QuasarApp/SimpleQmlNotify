@@ -45,26 +45,26 @@ BasePopUp {
     backgroundColor: Material.background
 
     contentItem:
-        Item {
+        Control {
+        id: control;
+        implicitHeight: rowLayout.implicitHeight
 
         RowLayout {
             id: rowLayout
             spacing: 5
             clip: true
 
-            Rectangle {
-                color: "#00000000"
-                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                Layout.preferredWidth: rowLayout.height;
-                Layout.preferredHeight: rowLayout.height;
+            width: control.width
 
-                Image {
-                    id: image
-                    fillMode: Image.PreserveAspectCrop
-                    clip: true
-                    anchors.fill: parent;
-                    source: img
-                }
+            Image {
+                id: image
+                Layout.preferredWidth:  Math.max(message.height, 50);
+                Layout.preferredHeight: Math.max(message.height, 50);
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+
+                fillMode: Image.PreserveAspectCrop
+                clip: true
+                source: img
             }
 
 
@@ -72,15 +72,13 @@ BasePopUp {
                 id: message
                 text: popup.text
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                Layout.fillHeight: true;
                 Layout.fillWidth: true;
                 clip: true
                 wrapMode: Text.WordWrap
                 verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
+                horizontalAlignment: Text.AlignLeft
             }
 
-            anchors.fill: parent
         }
 
         MouseArea {

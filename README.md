@@ -76,14 +76,12 @@ Simple Qml notification service for qml applications.
  int main() {
      QmlNotificationService::init();
      auto service = QmlNotificationService::NotificationService::getService();
-     int questionCode = service->setQuestion("title", "some text");
 
-     QObject::connect(service, QmlNotificationService::NotificationService::questionCompleted,
-                     [questionCode](bool accepted, int questionCode) {
-                         if (accepted && code === questionCode) {
-                            // your action here. 
-                         }
-                     })
+     QmlNotificationService::Listner listner = [] (bool accepted) {
+                            // your action here.
+     };
+
+     service->setQuestion(listner, "title", "some text");
 
      
  }
@@ -100,19 +98,15 @@ Simple Qml notification service for qml applications.
      anchors.fill: parent;
  }
  
-readonly property int questionCode: 0;
-
-questionCode = notificationService.setQuestion(qsTr("Remove %0 user").arg(userModel.userId),
-                                qsTr("All saved data and records will be delete, Do you want continuee?"))
-Connections {
-    target: notificationService
-    function onQuestionCompleted(accepted, code) {
-        if (accepted && code === privateRoot.questionCode) {
-            if (userModel)
-                backEnd.removeUser(userModel.userId)
-        }
-    }
-}
+ Item {
+ 
+     notificationService.setQuestion(this, "onQuestionCompleted", qsTr("Remove %0 user").arg(userModel.userId),
+                                qsTr("All saved data and records will be delete, Do you want continuee?"));
+                                
+     function onQuestionCompleted(accepted) {
+        // your action here.   
+     }
+ }
 
 ```
 ### Include translations

@@ -6,6 +6,8 @@
 */
 
 #include "notificationservice.h"
+
+#include <QSharedPointer>
 namespace QmlNotificationService {
 
 NotificationService::NotificationService(QObject * ptr): QObject (ptr) {
@@ -31,16 +33,26 @@ void NotificationService::setNotify(const NotificationData& notify) {
     emit notifyChanged();
 }
 
-int NotificationService::setQuestion(const NotificationData &question) {
+int NotificationService::setQuestion(const Listner& listner, const NotificationData &question) {
 
     _question = question;
-    _question.setCode(rand() % std::numeric_limits<int>().max());
+    int questionCode = rand();
+    _question.setCode(questionCode);
     emit questionChanged();
+
+    _listners[questionCode] = listner;
 
     return _question.type();
 }
 
 void NotificationService::questionComplete(bool accepted, int code) {
+
+    if (_listners.contains(code)) {
+        auto listner = _listners.value(code);
+        listner(accepted);
+        _listners.remove(code);
+    }
+
     emit questionCompleted(accepted, code);
 }
 
@@ -53,8 +65,34 @@ void NotificationService::setNotify(const QString &title,
                                static_cast<NotificationData::Type>(type)));
 }
 
-int NotificationService::setQuestion(const QString &title, const QString &text, const QString &img, int code) {
-    return setQuestion(NotificationData(title, text, img, code));
+int NotificationService::setQuestion(QObject *listnerObject,
+                                     const QString &listnerMethod,
+                                     const QString &title,
+                                     const QString &text,
+                                     const QString &img,
+                                     int code) {
+
+    Listner listner = [listnerObject, listnerMethod](bool accept) {
+
+        const QByteArray stringData = listnerMethod.toLatin1();
+        char method[100];
+        method[qMin(99, stringData.size())] = '\0';
+        std::copy(stringData.constBegin(), stringData.constBegin() + qMin(99, stringData.size()), method);
+
+        QMetaObject::invokeMethod(listnerObject, method,
+                                  Qt::QueuedConnection, Q_ARG(bool, accept));
+    };
+
+    return setQuestion(listner, NotificationData(title, text, img, code));
+}
+
+int NotificationService::setQuestion(const Listner& listner,
+                                     const QString &title,
+                                     const QString &text,
+                                     const QString &img,
+                                     int code) {
+
+    return setQuestion(listner, NotificationData(title, text, img, code));
 }
 
 NotificationService *NotificationService::getService() {

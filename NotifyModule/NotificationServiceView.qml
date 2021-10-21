@@ -11,6 +11,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.3
 
 Item {
+    id : root;
     readonly property var model: notificationService;
     readonly property var msg: model.notify
     readonly property var qst: model.question
@@ -45,8 +46,7 @@ Item {
         x: parent.width / 2  - width / 2;
         y: parent.height / 2 - height / 2;
 
-        width: 6 * metrix.pt;
-        height: width * 0.45
+        width: Math.min(6 * metrix.pt, root.width);
 
         onAccepted: {
             if (model) {

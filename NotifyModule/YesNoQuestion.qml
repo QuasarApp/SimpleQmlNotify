@@ -10,6 +10,7 @@ NotificationForm {
 
     autoClose: false
     clickClose: false
+    modal: true
 
     footer: DialogButtonBox {
         standardButtons: Dialog.Yes | Dialog.No;
