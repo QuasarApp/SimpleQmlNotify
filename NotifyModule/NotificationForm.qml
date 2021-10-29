@@ -48,6 +48,7 @@ BasePopUp {
         Control {
         id: control;
         implicitHeight: rowLayout.implicitHeight
+        implicitWidth: 0x0
 
         RowLayout {
             id: rowLayout
@@ -58,8 +59,8 @@ BasePopUp {
 
             Image {
                 id: image
-                Layout.preferredWidth:  Math.max(message.height, 50);
-                Layout.preferredHeight: Math.max(message.height, 50);
+                Layout.preferredWidth:  50;
+                Layout.preferredHeight: 50;
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 
                 fillMode: Image.PreserveAspectCrop
