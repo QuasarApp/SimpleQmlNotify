@@ -35,20 +35,69 @@ BasePopUp {
     }
 
     autoClose: true;
-    closeInterval: 5000
+    closeInterval: 10000
 
     margins: 0
     margin: 0
     spacing: 0
 
-
     backgroundColor: Material.background
+
+    header: Pane {
+
+        RowLayout {
+            width: popup.width
+
+            Label {
+                text: title
+                wrapMode: Text.WordWrap
+                font.bold: true
+                font.pointSize: 13
+                Layout.fillWidth: true
+            }
+
+            ToolButton {
+                text: "X"
+
+                onClicked:  {
+                    close();
+                }
+            }
+        }
+    }
 
     contentItem:
         Control {
         id: control;
         implicitHeight: rowLayout.implicitHeight
         implicitWidth: 0x0
+
+        MouseArea {
+            hoverEnabled: true
+            onEntered: {
+                autoclosePause();
+            }
+
+            onExited: {
+                autocloseResume();
+
+            }
+
+            onClicked: {
+
+                if (!autoClose) {
+                    close();
+                }
+
+                if (autoClosePasused) {
+                    autocloseResume()
+                } else {
+                    autoclosePause();
+                }
+            }
+
+            anchors.fill: parent
+        }
 
         RowLayout {
             id: rowLayout
@@ -78,34 +127,23 @@ BasePopUp {
                 wrapMode: Text.WordWrap
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignLeft
+                linkColor: Material.accent
+
+                onLinkActivated: (link) => {
+                                     Qt.openUrlExternally(link)
+                                 }
+                onLinkHovered: (link) => {
+                                   if (link.length) {
+                                        message.ToolTip.show(link)
+                                   } else {
+                                       message.ToolTip.hide()
+                                   }
+                               }
+
+
             }
 
-        }
 
-        MouseArea {
-            hoverEnabled: true
-            onEntered: {
-                autoclosePause();
-            }
-
-            onExited: {
-                autocloseResume();
-            }
-
-            onClicked: {
-
-                if (!autoClose) {
-                    close();
-                }
-
-                if (autoClosePasused) {
-                    autocloseResume()
-                } else {
-                    autoclosePause();
-                }
-            }
-
-            anchors.fill: parent
         }
     }
 
