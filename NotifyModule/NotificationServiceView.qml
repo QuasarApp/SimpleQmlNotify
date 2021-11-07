@@ -32,8 +32,7 @@ Item {
         x: parent.width - width - margin;
         y: margin;
 
-        width: 4 * metrix.pt;
-        height: width * 0.5
+
     }
 
     YesNoQuestion {
