@@ -32,6 +32,7 @@ Item {
         x: parent.width - width - margin;
         y: margin;
 
+        width: Math.min(6 * metrix.pt, root.width);
 
     }
 
