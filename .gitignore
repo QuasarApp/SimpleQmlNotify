@@ -46,3 +46,6 @@ CMakeLists.txt.user*
 CMakeFiles
 *_autogen
 cmake_install.cmake
+
+#cmake
+notifyservice_global.h

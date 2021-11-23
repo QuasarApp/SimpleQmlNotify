@@ -101,6 +101,11 @@ public:
                                 const QString& img = "",
                                 int code = 0);
 
+    /**
+     * @brief libVersion This method return string value of the version of this library.
+     * @return string value of the version of this library.
+     */
+    static QString libVersion();
 
     /**
      * @brief getService This method return instance to notify service.

@@ -95,6 +95,10 @@ int NotificationService::setQuestion(const Listner& listner,
     return setQuestion(listner, NotificationData(title, text, img, code));
 }
 
+QString NotificationService::libVersion() {
+    return QML_NOTIFY_VERSION;
+}
+
 NotificationService *NotificationService::getService() {
     static auto service = new NotificationService;
     return service;

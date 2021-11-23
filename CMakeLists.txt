@@ -47,7 +47,13 @@ set(LANGS ${CMAKE_CURRENT_SOURCE_DIR}/qmlNotify_languages/en.ts
 
 prepareQM( ${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR} "${LANGS}")
 
-setVersion(1 0 1)
+
+updateGitVars()
+setVersion(1 0 ${GIT_COMMIT_COUNT})
+
+set(QML_NOTIFY_VERSION 1.0.${GIT_COMMIT_COUNT}.${GIT_COMMIT_HASH})
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/notifyservice_global.h.in ${CMAKE_CURRENT_SOURCE_DIR}/notifyservice_global.h @ONLY)
 
 initAll()
 
