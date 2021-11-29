@@ -41,12 +41,17 @@ BasePopUp {
     margin: 0
     spacing: 0
 
-    backgroundColor: Material.background
+    backgroundColor: Qt.rgba(Material.background.r * 0.9, Material.background.g * 0.9, Material.background.b * 0.9, Material.background.a)
 
     header: Pane {
 
+
         RowLayout {
             width: popup.width
+
+            Item {
+                Layout.preferredWidth: 10
+            }
 
             Label {
                 text: title
@@ -58,11 +63,15 @@ BasePopUp {
 
             ToolButton {
                 text: "X"
-
                 onClicked:  {
                     close();
                 }
             }
+
+            Item {
+                Layout.preferredWidth: 10
+            }
+
         }
     }
 
