@@ -28,7 +28,7 @@ if (NOT QT_VERSION_MAJOR)
 endif()
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick QuickControls2 REQUIRED)
 
-file(GLOB SOURCE_CPP "*.cpp" "*.qrc")
+file(GLOB SOURCE_CPP "*.cpp" "*.h" "*.qrc")
 
 add_library(${PROJECT_NAME} ${SOURCE_CPP})
 target_link_libraries(${PROJECT_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::QuickControls2)
