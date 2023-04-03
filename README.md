@@ -3,17 +3,6 @@ Simple Qml notification service for qml applications.
 
 ## Include
 
-### For qmake projects 
-
- * cd yourRepo
- * git submodule add https://github.com/QuasarApp/SimpleQmlNotify.git # add the repository of QSimpleQmlNotify into your repo like submodule
- * git submodule update --init --recursive
- * Include in your pro file the pri file of Qt-Secret library
-  ```qmake
-    include($$PWD/SimpleQmlNotify/QmlNotify.pri)
-  ```
- * Rebuild yuor project
-
 ### For cmake projects
 #### The cmake build do not required Qt libraries. 
  
