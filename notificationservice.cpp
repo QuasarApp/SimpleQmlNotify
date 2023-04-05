@@ -13,7 +13,6 @@ namespace QmlNotificationService {
 NotificationService::NotificationService(QObject * ptr): QObject (ptr) {
     qRegisterMetaType<NotificationData>("NotificationData");
     qRegisterMetaType<QList<NotificationData>> ("QList<NotificationData>");
-
 }
 
 NotificationData NotificationService::notify() const {
@@ -25,9 +24,9 @@ NotificationData NotificationService::question() const {
 }
 
 void NotificationService::setNotify(const NotificationData& notify) {
-    if (_notify != notify)
-        _history.push_back(_notify);
-
+    if (_notify != notify) {
+        _history.setHistory(notify);
+    }
     _notify = notify;
 
     emit notifyChanged();
@@ -104,8 +103,8 @@ NotificationService *NotificationService::getService() {
     return service;
 }
 
-const QList<NotificationData> &NotificationService::history() const {
-    return _history;
-}
+//const QList<NotificationData> &NotificationService::history() const {
+//    return _history;
+//}
 
 }

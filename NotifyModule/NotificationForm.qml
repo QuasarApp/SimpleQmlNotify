@@ -62,6 +62,15 @@ BasePopUp {
             }
 
             ToolButton {
+                text: "History"
+                font.pointSize: 10
+                onClicked:  {
+                    history.open()
+                    popup.close()
+                }
+            }
+
+            ToolButton {
                 text: "X"
                 onClicked:  {
                     close();
@@ -151,10 +160,9 @@ BasePopUp {
 
 
             }
-
-
         }
     }
+
 
     title: titleText
 }

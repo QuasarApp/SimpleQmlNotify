@@ -73,4 +73,11 @@ Item {
             questionMsgBox._show();
         }
     }
+
+    NotificationHistoryView {
+        id: history
+        width: parent.width * 0.6
+        height: parent.height * 0.5
+        anchors.centerIn: parent
+    }
 }

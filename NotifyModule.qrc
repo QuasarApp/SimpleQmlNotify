@@ -16,6 +16,7 @@
         <file>qmlNotify_languages/fr.qm</file>
         <file>qmlNotify_languages/de.qm</file>
         <file>qmlNotify_languages/zh.qm</file>
+        <file>NotifyModule/NotificationHistoryView.qml</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="warning">icons/Warning.png</file>

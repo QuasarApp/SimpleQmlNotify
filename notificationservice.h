@@ -2,6 +2,7 @@
 #define NOTIFICATIONSERVICE_H
 
 #include "notificationdata.h"
+#include "historynotificationsmodel.h"
 
 #include <QHash>
 #include <QObject>
@@ -23,7 +24,7 @@ class NOTIFYSERVICESHARED_EXPORT NotificationService: public QObject
     Q_PROPERTY(NotificationData notify READ notify NOTIFY notifyChanged)
     Q_PROPERTY(NotificationData question READ question NOTIFY questionChanged)
 
-    Q_PROPERTY(QList<NotificationData> history READ history NOTIFY notifyChanged)
+    //Q_PROPERTY(HistoryNotificationModel history READ history NOTIFY notifyChanged)
 
 public:
     /**
@@ -117,7 +118,7 @@ public:
      * @brief history - This method used for return notify list.
      * @return list of all notify.
      */
-    const QList<NotificationData> & history() const;
+   // const HistoryNotificationModel & history() const;
 
 signals:
     /**
@@ -145,7 +146,7 @@ private:
     QHash<int, Listner> _listners;
     NotificationData _question;
     NotificationData _notify;
-    QList<NotificationData> _history;
+    HistoryNotificationsModel _history;
 };
 
 }
