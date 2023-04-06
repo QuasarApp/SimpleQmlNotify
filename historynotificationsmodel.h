@@ -15,8 +15,6 @@ class HistoryNotificationsModel : public QAbstractListModel
         Type
     };
 
-    Q_PROPERTY(int notificationsCount READ getNotificationsCount WRITE setNotificationsCount NOTIFY notificationsCountChanged)
-
 public:
     explicit HistoryNotificationsModel(QObject *parent = nullptr);
 
@@ -34,7 +32,6 @@ signals:
 
 private:
     QList<QmlNotificationService::NotificationData> notificationsList;
-    int m_notificationsCount;
 };
 
 #endif // HISTORYNOTIFICATIONMODEL_H

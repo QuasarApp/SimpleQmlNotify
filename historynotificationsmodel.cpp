@@ -39,10 +39,10 @@ QHash<int, QByteArray> HistoryNotificationsModel::roleNames() const {
 
 
 void HistoryNotificationsModel::setHistory(const QmlNotificationService::NotificationData &notificationData) {
-    beginResetModel();
-    notificationsList.push_back(notificationData);
-    endResetModel();
-    emit dataInserted();
+    const int index = notificationsList.count() > 0? notificationsList.count() - 1 : notificationsList.count();
+    beginInsertRows(QModelIndex(), index, index);
+    notificationsList.insert(index, notificationData);
+    endInsertRows();
 }
 
 void HistoryNotificationsModel::clearAllHistory() {
