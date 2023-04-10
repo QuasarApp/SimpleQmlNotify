@@ -15,7 +15,7 @@ QVariant HistoryNotificationsModel::data(const QModelIndex &index, int role) con
 
     switch (role) {
     case Icon:
-        return notificationsList.at(index.row()).img();
+         return notificationsList.at(index.row()).img();
     case Title:
         return notificationsList.at(index.row()).title();
     case Message:
@@ -38,10 +38,15 @@ QHash<int, QByteArray> HistoryNotificationsModel::roleNames() const {
 }
 
 
-void HistoryNotificationsModel::setHistory(const QmlNotificationService::NotificationData &notificationData) {
-    beginResetModel();
-    notificationsList.push_back(notificationData);
-    endResetModel();
+void HistoryNotificationsModel::addHistoryObject(const QmlNotificationService::NotificationData &notificationData) {
+    beginInsertRows({}, rowCount({}), rowCount({}));
+    notificationsList.append(notificationData);
+    endInsertRows();
+}
+
+void HistoryNotificationsModel::setHistory(const QList<QmlNotificationService::NotificationData> &historyList)
+{
+    notificationsList = std::move(historyList);
 }
 
 void HistoryNotificationsModel::clearAllHistory() {
@@ -51,8 +56,11 @@ void HistoryNotificationsModel::clearAllHistory() {
 }
 
 void HistoryNotificationsModel::removeNotificationItemAtIndex(const int elementIndex) {
-    beginResetModel();
+    beginRemoveRows({}, elementIndex, elementIndex);
     notificationsList.removeAt(elementIndex);
-    endResetModel();
+    endRemoveRows();
 }
+
+
+
 

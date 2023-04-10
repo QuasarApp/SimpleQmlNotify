@@ -5,7 +5,7 @@ import QtQuick.Controls.Material 2.15
 Popup {
     id: root
 
-    readonly property var historyModel: historyNotificationsModel
+    readonly property var historyModel: notificationService.history
 
     ToolBar {
         id: toolbar
@@ -159,13 +159,6 @@ Popup {
                     color: deleteLabel.SwipeDelegate.pressed? "red" : "gray"
                 }
             }
-        }
-    }
-
-    Connections {
-        target: historyModel
-        function onDataInserted() {
-            console.log(Object.keys(historyModel))
         }
     }
 }

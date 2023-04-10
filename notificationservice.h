@@ -6,6 +6,7 @@
 
 #include <QHash>
 #include <QObject>
+#include <QSharedPointer>
 
 namespace QmlNotificationService {
 
@@ -24,7 +25,7 @@ class NOTIFYSERVICESHARED_EXPORT NotificationService: public QObject
     Q_PROPERTY(NotificationData notify READ notify NOTIFY notifyChanged)
     Q_PROPERTY(NotificationData question READ question NOTIFY questionChanged)
 
-    //Q_PROPERTY(HistoryNotificationModel history READ history NOTIFY notifyChanged)
+   // Q_PROPERTY(QObject* history READ history NOTIFY notifyChanged)
 
 public:
     /**
@@ -115,10 +116,10 @@ public:
     static NotificationService* getService();
 
     /**
-     * @brief history - This method used for return notify list.
-     * @return list of all notify.
+     * @brief history - This method used for return notify history model.
+     * @return history model of all notify.
      */
-   // const HistoryNotificationModel & history() const;
+  //   QObject* history() const;
 
 signals:
     /**

@@ -7,7 +7,6 @@
 
 #include "notificationservice.h"
 #include "qmlnotifyservice.h"
-#include "historynotificationsmodel.h"
 
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -23,12 +22,10 @@ bool init(QQmlApplicationEngine *engine) {
         return false;
 
     initSNotufyResources();
-    QPointer<HistoryNotificationsModel> historyModel = new HistoryNotificationsModel();
 
     engine->addImportPath(":/");
 
     root->setContextProperty("notificationService", NotificationService::getService());
-    root->setContextProperty("historyNotificationsModel", historyModel);
     return true;
 }
 }

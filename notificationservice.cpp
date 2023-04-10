@@ -7,12 +7,14 @@
 
 #include "notificationservice.h"
 
-#include <QSharedPointer>
+
 namespace QmlNotificationService {
 
 NotificationService::NotificationService(QObject * ptr): QObject (ptr) {
     qRegisterMetaType<NotificationData>("NotificationData");
     qRegisterMetaType<QList<NotificationData>> ("QList<NotificationData>");
+    qRegisterMetaType<QSharedPointer<HistoryNotificationsModel>>("QSharedPointer<HistoryNotificationsModel>");
+    setNotify("Test", "Test");
 }
 
 NotificationData NotificationService::notify() const {
@@ -25,7 +27,7 @@ NotificationData NotificationService::question() const {
 
 void NotificationService::setNotify(const NotificationData& notify) {
     if (_notify != notify) {
-        _history.setHistory(notify);
+         _history.addHistoryObject(notify);
     }
     _notify = notify;
 
@@ -103,8 +105,8 @@ NotificationService *NotificationService::getService() {
     return service;
 }
 
-//const QList<NotificationData> &NotificationService::history() const {
-//    return _history;
+//QObject *NotificationService::history() const{
+//    return _history.data();
 //}
 
 }

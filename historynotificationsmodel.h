@@ -21,14 +21,10 @@ public:
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
-    void setHistory(const QmlNotificationService::NotificationData &notificationData);
+    void addHistoryObject(const QmlNotificationService::NotificationData &notificationData);
+    void setHistory(const QList<QmlNotificationService::NotificationData> &historyList);
     Q_INVOKABLE void clearAllHistory();
-
     Q_INVOKABLE void removeNotificationItemAtIndex(const int index);
-
-
-signals:
-    void dataInserted();
 
 private:
     QList<QmlNotificationService::NotificationData> notificationsList;
