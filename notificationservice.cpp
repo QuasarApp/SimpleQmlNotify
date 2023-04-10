@@ -27,7 +27,7 @@ NotificationData NotificationService::question() const {
 
 void NotificationService::setNotify(const NotificationData& notify) {
     if (_notify != notify) {
-         _history.addHistoryObject(notify);
+        _history->addHistoryObject(notify);
     }
     _notify = notify;
 
@@ -105,8 +105,8 @@ NotificationService *NotificationService::getService() {
     return service;
 }
 
-//QObject *NotificationService::history() const{
-//    return _history.data();
-//}
+QObject *NotificationService::history() const{
+    return _history.data();
+}
 
 }
