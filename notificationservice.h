@@ -7,6 +7,7 @@
 #include <QHash>
 #include <QObject>
 #include <QSharedPointer>
+#include <QQmlEngine>
 
 namespace QmlNotificationService {
 
@@ -121,6 +122,8 @@ public:
      */
      QObject* history() const;
 
+     ~NotificationService();
+
 signals:
     /**
      * @brief notifyChanged This signal emited whet the notificator (Ths object) received a new notification message.
@@ -147,7 +150,7 @@ private:
     QHash<int, Listner> _listners;
     NotificationData _question;
     NotificationData _notify;
-    QSharedPointer<HistoryNotificationsModel> _history;
+    HistoryNotificationsModel* _history = nullptr;
 };
 
 }

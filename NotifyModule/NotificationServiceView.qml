@@ -76,7 +76,7 @@ Item {
 
     NotificationHistoryView {
         id: history
-        width: parent.width * 0.6
+        width: parent.width * 0.8
         height: parent.height * 0.5
         anchors.centerIn: parent
     }

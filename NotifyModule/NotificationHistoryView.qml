@@ -58,6 +58,7 @@ Popup {
         width: parent.width
         height: parent.height * 0.9
         clip: true
+        spacing: 5
         model: historyModel
         anchors {
             top: toolbar.bottom
@@ -88,7 +89,6 @@ Popup {
                     value: true
                 }
 
-
                 NumberAnimation {
                     target: swipeDelegate
                     property: "height"
@@ -97,7 +97,6 @@ Popup {
                     easing.type: Easing.InOutQuad
                 }
 
-
                 PropertyAction {
                     target: swipeDelegate;
                     property: "ListView.delayRemove"
@@ -105,41 +104,47 @@ Popup {
                 }
             }
 
-            Image {
-                id: notificationIcon
-                width: notificationIcon.sourceSize.width * 0.25
-                height: notificationIcon.sourceSize.height * 0.25
-                source: model.icon
-                fillMode: Image.PreserveAspectFit
-                anchors {
-                    left: parent.left
-                    leftMargin: parent.width * 0.1
-                    verticalCenter: parent.verticalCenter
-                }
-            }
+            contentItem: Row {
+                width: parent.width
+                spacing: width * 0.35
 
-            Column {
-                id: column
-                width: parent.width * 0.25
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
+                Image {
+                    id: notificationIcon
+                    width: notificationIcon.sourceSize.width * 0.15
+                    height: notificationIcon.sourceSize.height * 0.15
+                    source: model.icon
+                    fillMode: Image.PreserveAspectFit
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                    }
                 }
 
-                Label {
-                    id: notificationTitle
-                    text: qsTr(model.title)
-                    font.pointSize: 12
-                    clip: true
-                }
+                Column {
+                    id: column
+                    width: parent.width - notificationIcon.width * 0.2
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                    }
 
-                Label {
-                    id: notificationText
-                    text: qsTr(model.text)
-                    font.pointSize: 12
-                    wrapMode: Text.WordWrap
-                    clip: true
-                    linkColor: Material.accent
+                    Label {
+                        id: notificationTitle
+                        width: parent.width
+                        text: qsTr(model.title)
+                        font.pointSize: 12
+                        elide: Label.ElideRight
+                    }
+
+                    Label {
+                        id: notificationText
+                        width: parent.width
+                        text: qsTr(model.text)
+                        font.pointSize: 12
+                        elide: {
+                            console.log(notificationText.width, parent.width, notificationText.width < parent.width)
+                            Label.ElideRight
+                        }
+                        linkColor: Material.accent
+                    }
                 }
             }
 
@@ -152,11 +157,10 @@ Popup {
                 height: parent.height
                 anchors.right: parent.right
 
-
                 SwipeDelegate.onClicked: notificationLV.model.removeNotificationItemAtIndex(index)
 
                 background: Rectangle {
-                    color: deleteLabel.SwipeDelegate.pressed? "red" : "gray"
+                    color:  "red"
                 }
             }
         }

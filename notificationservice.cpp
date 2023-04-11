@@ -13,8 +13,12 @@ namespace QmlNotificationService {
 NotificationService::NotificationService(QObject * ptr): QObject (ptr) {
     qRegisterMetaType<NotificationData>("NotificationData");
     qRegisterMetaType<QList<NotificationData>> ("QList<NotificationData>");
-    qRegisterMetaType<QSharedPointer<HistoryNotificationsModel>>("QSharedPointer<HistoryNotificationsModel>");
-    setNotify("Test", "Test");
+    _history = new HistoryNotificationsModel();
+    QQmlEngine::setObjectOwnership(_history, QQmlEngine::CppOwnership);
+}
+
+NotificationService::~NotificationService() {
+    delete _history;
 }
 
 NotificationData NotificationService::notify() const {
@@ -106,7 +110,7 @@ NotificationService *NotificationService::getService() {
 }
 
 QObject *NotificationService::history() const{
-    return _history.data();
+    return _history;
 }
 
 }
