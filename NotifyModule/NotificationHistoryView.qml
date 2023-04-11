@@ -139,10 +139,7 @@ Popup {
                         width: parent.width
                         text: qsTr(model.text)
                         font.pointSize: 12
-                        elide: {
-                            console.log(notificationText.width, parent.width, notificationText.width < parent.width)
-                            Label.ElideRight
-                        }
+                        elide:  Label.ElideRight
                         linkColor: Material.accent
                     }
                 }
