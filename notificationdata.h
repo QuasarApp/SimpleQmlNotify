@@ -71,10 +71,15 @@ public:
     bool operator !=(const NotificationData &righ);
 
 private:
+    QString getDefaultImage(const QString &img, const int code);
+
     QString _text;
     QString _img;
     QString _title;
     int _type;
+    QString defImgI;
+    QString defImgW;
+    QString defImgE;
 
 };
 }

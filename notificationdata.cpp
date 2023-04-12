@@ -11,11 +11,13 @@ namespace QmlNotificationService {
 NotificationData::NotificationData(const QString &title,
                                    const QString &text,
                                    const QString &img, int type) {
-
+    defImgI = "qrc:/icons/info";
+    defImgW = "qrc:/icons/warning";
+    defImgE = "qrc:/icons/error";
     _text = text;
     _title = title;
-    _img = img;
     _type = type;
+    _img = getDefaultImage(img, type);
 }
 
 QString NotificationData::text() const {
@@ -39,6 +41,25 @@ bool NotificationData::operator ==(const NotificationData &righ) {
 
 bool NotificationData::operator !=(const NotificationData &righ) {
     return !operator==(righ);
+}
+
+QString NotificationData::getDefaultImage(const QString &img, const int code)
+{
+    if(img != "")
+        return img;
+
+    const auto notificationType = static_cast<NotificationData::Type>(code);
+
+    switch (notificationType) {
+    case NotificationData::Type::Normal:
+        return defImgI;
+    case NotificationData::Type::Warning:
+        return defImgW;
+    case NotificationData::Type::Error:
+        return defImgE;
+    default:
+        return defImgI;
+    }
 }
 
 int NotificationData::type() const {
