@@ -6,8 +6,7 @@
 */
 
 #include "notificationservice.h"
-
-
+#include <QDebug>
 namespace QmlNotificationService {
 
 NotificationService::NotificationService(QObject * ptr): QObject (ptr) {
@@ -109,8 +108,13 @@ NotificationService *NotificationService::getService() {
     return service;
 }
 
-QObject *NotificationService::history() const{
+QObject *NotificationService::history() const {
     return _history;
+}
+
+void NotificationService::showHistory()
+{
+    emit sigShowHistory();
 }
 
 }

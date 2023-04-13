@@ -43,6 +43,13 @@ public:
      */
     Q_INVOKABLE QString img() const;
 
+
+    /**
+     * @brief imgSrc This method return url to image of a question/notification object.
+     * @return url of image.
+     */
+    QString imgSrc() const;
+
     /**
      * @brief title This method return title of a question/notification object.
      * @return title of a question/notification object.
@@ -71,15 +78,12 @@ public:
     bool operator !=(const NotificationData &righ);
 
 private:
-    QString getDefaultImage(const QString &img, const int code);
+    QString getDefaultImage(const int code) const;
 
     QString _text;
     QString _img;
     QString _title;
     int _type;
-    QString defImgI;
-    QString defImgW;
-    QString defImgE;
 
 };
 }

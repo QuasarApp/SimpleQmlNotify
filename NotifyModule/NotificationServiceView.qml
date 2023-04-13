@@ -80,4 +80,11 @@ Item {
         height: parent.height * 0.5
         anchors.centerIn: parent
     }
+
+    Connections {
+        target: model
+        function onSigShowHistory() {
+            history.open()
+        }
+    }
 }

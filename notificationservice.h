@@ -122,9 +122,15 @@ public:
      */
      QObject* history() const;
 
+    /**
+     * @brief showHistory - This method used for emit signal by which show notification menu.
+     */
+
+    Q_INVOKABLE void showHistory();
+
      ~NotificationService();
 
-signals:
+ signals:
     /**
      * @brief notifyChanged This signal emited whet the notificator (Ths object) received a new notification message.
      */
@@ -143,9 +149,14 @@ signals:
      */
     void questionCompleted(bool accepted, int questionCode);
 
+    void historyListChanged();
+
+    void sigShowHistory();
+
 private:
 
     explicit NotificationService(QObject *ptr = nullptr);
+
 
     QHash<int, Listner> _listners;
     NotificationData _question;

@@ -11,13 +11,11 @@ namespace QmlNotificationService {
 NotificationData::NotificationData(const QString &title,
                                    const QString &text,
                                    const QString &img, int type) {
-    defImgI = "qrc:/icons/info";
-    defImgW = "qrc:/icons/warning";
-    defImgE = "qrc:/icons/error";
+
     _text = text;
     _title = title;
+    _img = img;
     _type = type;
-    _img = getDefaultImage(img, type);
 }
 
 QString NotificationData::text() const {
@@ -25,6 +23,15 @@ QString NotificationData::text() const {
 }
 
 QString NotificationData::img() const {
+    const QString imageSrc = imgSrc();
+    if(imageSrc != "")
+      return imageSrc;
+    else
+      return this->getDefaultImage(_type);
+}
+
+QString NotificationData::imgSrc() const
+{
     return _img;
 }
 
@@ -43,22 +50,20 @@ bool NotificationData::operator !=(const NotificationData &righ) {
     return !operator==(righ);
 }
 
-QString NotificationData::getDefaultImage(const QString &img, const int code)
+QString NotificationData::getDefaultImage(const int code) const
 {
-    if(img != "")
-        return img;
 
     const auto notificationType = static_cast<NotificationData::Type>(code);
 
     switch (notificationType) {
     case NotificationData::Type::Normal:
-        return defImgI;
+        return "qrc:/icons/info";
     case NotificationData::Type::Warning:
-        return defImgW;
+        return "qrc:/icons/warning";
     case NotificationData::Type::Error:
-        return defImgE;
+        return "qrc:/icons/error";
     default:
-        return defImgI;
+        return "";
     }
 }
 

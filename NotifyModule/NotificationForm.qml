@@ -62,7 +62,7 @@ BasePopUp {
             }
 
             ToolButton {
-                text: "History"
+                text: String.fromCharCode(0x2630)
                 font.pointSize: 10
                 onClicked:  {
                     history.open()

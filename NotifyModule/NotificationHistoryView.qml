@@ -106,12 +106,12 @@ Popup {
 
             contentItem: Row {
                 width: parent.width
-                spacing: width * 0.35
+                spacing: width * 0.2
 
                 Image {
                     id: notificationIcon
-                    width: notificationIcon.sourceSize.width * 0.15
-                    height: notificationIcon.sourceSize.height * 0.15
+                    width: notificationIcon.sourceSize.width * 0.2
+                    height: notificationIcon.sourceSize.height * 0.2
                     source: model.icon
                     fillMode: Image.PreserveAspectFit
                     anchors {
@@ -121,7 +121,7 @@ Popup {
 
                 Column {
                     id: column
-                    width: parent.width - notificationIcon.width * 0.2
+                    width: parent.width - notificationIcon.width - parent.spacing
                     anchors {
                         verticalCenter: parent.verticalCenter
                     }
