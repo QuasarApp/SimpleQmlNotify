@@ -44,8 +44,7 @@ void HistoryNotificationsModel::addHistoryObject(const QmlNotificationService::N
     endInsertRows();
 }
 
-void HistoryNotificationsModel::setHistory(const QList<QmlNotificationService::NotificationData> &historyList)
-{
+void HistoryNotificationsModel::setHistory(const QList<QmlNotificationService::NotificationData> &historyList) {
     notificationsList = std::move(historyList);
 }
 

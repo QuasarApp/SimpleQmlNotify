@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright (C) 2018-2023 QuasarApp.
  * Distributed under the lgplv3 software license, see the accompanying
  * Everyone is permitted to copy and distribute verbatim copies
@@ -24,10 +24,10 @@ QString NotificationData::text() const {
 
 QString NotificationData::img() const {
     const QString imageSrc = imgSrc();
-    if(imageSrc != "")
+    if(imageSrc.size())
       return imageSrc;
-    else
-      return this->getDefaultImage(_type);
+
+    return this->getDefaultImage(_type);
 }
 
 QString NotificationData::imgSrc() const

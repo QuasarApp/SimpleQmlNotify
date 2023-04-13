@@ -6,7 +6,6 @@
 
 #include <QHash>
 #include <QObject>
-#include <QSharedPointer>
 #include <QQmlEngine>
 
 namespace QmlNotificationService {

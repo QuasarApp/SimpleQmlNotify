@@ -38,8 +38,8 @@ public:
     Q_INVOKABLE QString text() const;
 
     /**
-     * @brief img This method return url to image of a question/notification object.
-     * @return url of image.
+     * @brief img This method return url to image of a question/notification object if it exisis or return url of default question/notification image.
+     * @return url of image or url of default image.
      */
     Q_INVOKABLE QString img() const;
 
