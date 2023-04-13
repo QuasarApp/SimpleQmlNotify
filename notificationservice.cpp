@@ -112,8 +112,7 @@ QObject *NotificationService::history() const {
     return _history;
 }
 
-void NotificationService::showHistory()
-{
+void NotificationService::showHistory() {
     emit sigShowHistory();
 }
 

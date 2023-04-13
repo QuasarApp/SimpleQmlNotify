@@ -30,8 +30,7 @@ QString NotificationData::img() const {
     return this->getDefaultImage(_type);
 }
 
-QString NotificationData::imgSrc() const
-{
+QString NotificationData::imgSrc() const {
     return _img;
 }
 
@@ -50,8 +49,7 @@ bool NotificationData::operator !=(const NotificationData &righ) {
     return !operator==(righ);
 }
 
-QString NotificationData::getDefaultImage(const int code) const
-{
+QString NotificationData::getDefaultImage(const int code) const {
 
     const auto notificationType = static_cast<NotificationData::Type>(code);
 
