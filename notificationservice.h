@@ -127,6 +127,12 @@ public:
 
     Q_INVOKABLE void showHistory();
 
+     /**
+     * @brief notificationsCount - This method used for return count of history notifications.
+     * @return count of history notifications.
+     */
+    Q_INVOKABLE int notificationsCount() const;
+
      ~NotificationService();
 
  signals:
