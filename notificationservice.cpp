@@ -14,6 +14,10 @@ NotificationService::NotificationService(QObject * ptr): QObject (ptr) {
     qRegisterMetaType<QList<NotificationData>> ("QList<NotificationData>");
     _history = new HistoryNotificationsModel();
     QQmlEngine::setObjectOwnership(_history, QQmlEngine::CppOwnership);
+
+    connect(_history, &HistoryNotificationsModel::rowsInserted, this, &NotificationService::countNotificationsChanged);
+    connect(_history, &HistoryNotificationsModel::rowsRemoved, this, &NotificationService::countNotificationsChanged);
+    connect(_history, &HistoryNotificationsModel::modelReset, this, &NotificationService::countNotificationsChanged);
 }
 
 NotificationService::~NotificationService() {

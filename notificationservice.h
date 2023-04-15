@@ -158,6 +158,8 @@ public:
 
     void sigShowHistory();
 
+    void countNotificationsChanged();
+
 private:
 
     explicit NotificationService(QObject *ptr = nullptr);
