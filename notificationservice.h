@@ -27,6 +27,8 @@ class NOTIFYSERVICESHARED_EXPORT NotificationService: public QObject
 
     Q_PROPERTY(QObject* history READ history NOTIFY notifyChanged)
 
+    Q_PROPERTY(int notificationsCount READ notificationsCount NOTIFY countNotificationsChanged)
+
 public:
     /**
      * @brief Notify This method return data of the last notify message.
