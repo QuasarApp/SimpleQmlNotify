@@ -8,4 +8,19 @@
         <translation>Un message</translation>
     </message>
 </context>
+<context>
+    <name>NotificationHistoryView</name>
+    <message>
+        <source>Notification history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

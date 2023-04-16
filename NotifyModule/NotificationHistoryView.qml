@@ -1,27 +1,20 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
+import QtQuick.Layouts 1.3
 
-Popup {
+Dialog {
     id: root
 
     readonly property var historyModel: notificationService.history
 
-    ToolBar {
+    header: ToolBar {
         id: toolbar
-        width: parent.width
-        height: parent.height * 0.1
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
 
         ToolButton {
             id: clearAllButton
-            text: qsTr("Clear All")
+            text: qsTr("clear")
             height: parent.height
-            font.pointSize: 10
             anchors {
                 left: parent.left
                 verticalCenter: parent.verticalCenter
@@ -33,53 +26,25 @@ Popup {
         Label {
             id: toolbarTitle
             text: qsTr("Notification history")
-            font.pointSize: 12
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 verticalCenter: parent.verticalCenter
             }
         }
-
-        ToolButton {
-            id: closePopupButton
-            text: "X"
-            font.pointSize: 12
-            anchors {
-                right: parent.right
-                verticalCenter: parent.verticalCenter
-            }
-
-            onClicked: root.close()
-        }
     }
 
-    ListView {
+    contentItem: ListView {
         id: notificationLV
-        width: parent.width
-        height: parent.height * 0.9
         clip: true
-        spacing: 5
+        spacing: 10
         model: historyModel
-        anchors {
-            top: toolbar.bottom
-            horizontalCenter: parent.horizontalCenter
-        }
 
-        ScrollBar.vertical: ScrollBar {
-            hoverEnabled: true
-            active: hovered || pressed
-            anchors {
-                top: notificationLV.top
-                right: notificationLV.right
-                bottom: notificationLV.bottom
-            }
-        }
+        ScrollBar.vertical: ScrollBar {}
 
         delegate: SwipeDelegate {
             id: swipeDelegate
             text: model.notificationValue
             width: notificationLV.width
-            height: notificationLV.height * 0.15
 
             ListView.onRemove: SequentialAnimation {
 
@@ -91,9 +56,9 @@ Popup {
 
                 NumberAnimation {
                     target: swipeDelegate
-                    property: "height"
-                    to: 0
-                    duration: 20
+                    property: "x"
+                    to: -swipeDelegate.width
+                    duration: 200
                     easing.type: Easing.InOutQuad
                 }
 
@@ -104,43 +69,33 @@ Popup {
                 }
             }
 
-            contentItem: Row {
-                width: parent.width
-                spacing: width * 0.2
+            contentItem: RowLayout {
 
                 Image {
-                    id: notificationIcon
-                    width: notificationIcon.sourceSize.width * 0.2
-                    height: notificationIcon.sourceSize.height * 0.2
+                    id: image
+                    Layout.preferredWidth:  toolbar.height;
+                    Layout.preferredHeight: toolbar.height;
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+
+                    fillMode: Image.PreserveAspectCrop
+                    clip: true
                     source: model.icon
-                    fillMode: Image.PreserveAspectFit
-                    anchors {
-                        verticalCenter: parent.verticalCenter
-                    }
                 }
 
-                Column {
-                    id: column
-                    width: parent.width - notificationIcon.width - parent.spacing
-                    anchors {
-                        verticalCenter: parent.verticalCenter
-                    }
-
+                ColumnLayout {
                     Label {
                         id: notificationTitle
-                        width: parent.width
-                        text: qsTr(model.title)
-                        font.pointSize: 12
+                        text: model.title
                         elide: Label.ElideRight
                     }
 
                     Label {
                         id: notificationText
-                        width: parent.width
-                        text: qsTr(model.text)
-                        font.pointSize: 12
+                        text: model.text
                         elide:  Label.ElideRight
                         linkColor: Material.accent
+                        wrapMode: Text.WordWrap
+                        Layout.fillWidth: true
                     }
                 }
             }
