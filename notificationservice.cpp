@@ -7,13 +7,21 @@
 
 #include "notificationservice.h"
 
-#include <QSharedPointer>
 namespace QmlNotificationService {
 
 NotificationService::NotificationService(QObject * ptr): QObject (ptr) {
     qRegisterMetaType<NotificationData>("NotificationData");
     qRegisterMetaType<QList<NotificationData>> ("QList<NotificationData>");
+    _history = new HistoryNotificationsModel();
+    QQmlEngine::setObjectOwnership(_history, QQmlEngine::CppOwnership);
 
+    connect(_history, &HistoryNotificationsModel::rowsInserted, this, &NotificationService::countNotificationsChanged);
+    connect(_history, &HistoryNotificationsModel::rowsRemoved, this, &NotificationService::countNotificationsChanged);
+    connect(_history, &HistoryNotificationsModel::modelReset, this, &NotificationService::countNotificationsChanged);
+}
+
+NotificationService::~NotificationService() {
+    delete _history;
 }
 
 NotificationData NotificationService::notify() const {
@@ -25,9 +33,9 @@ NotificationData NotificationService::question() const {
 }
 
 void NotificationService::setNotify(const NotificationData& notify) {
-    if (_notify != notify)
-        _history.push_back(_notify);
-
+    if (_notify != notify) {
+        _history->addHistoryObject(notify);
+    }
     _notify = notify;
 
     emit notifyChanged();
@@ -104,8 +112,16 @@ NotificationService *NotificationService::getService() {
     return service;
 }
 
-const QList<NotificationData> &NotificationService::history() const {
+QObject *NotificationService::history() const {
     return _history;
+}
+
+void NotificationService::showHistory() {
+    emit sigShowHistory();
+}
+
+int NotificationService::notificationsCount() const {
+    return  _history->rowCount({});
 }
 
 }

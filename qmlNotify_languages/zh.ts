@@ -8,4 +8,19 @@
         <translation>信息</translation>
     </message>
 </context>
+<context>
+    <name>NotificationHistoryView</name>
+    <message>
+        <source>Notifications</source>
+        <translation>通知</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>刪除</translation>
+    </message>
+    <message>
+        <source>clear</source>
+        <translation>清除</translation>
+    </message>
+</context>
 </TS>

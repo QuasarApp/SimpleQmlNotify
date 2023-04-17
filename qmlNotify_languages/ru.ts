@@ -8,4 +8,19 @@
         <translation>Cообщение</translation>
     </message>
 </context>
+<context>
+    <name>NotificationHistoryView</name>
+    <message>
+        <source>Notifications</source>
+        <translation>Уведомления</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
+        <source>clear</source>
+        <translation>очистить</translation>
+    </message>
+</context>
 </TS>

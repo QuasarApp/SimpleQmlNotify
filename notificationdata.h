@@ -45,10 +45,17 @@ public:
     Q_INVOKABLE QString text() const;
 
     /**
-     * @brief img This method return url to image of a question/notification object.
-     * @return url of image.
+     * @brief img This method return url to image of a question/notification object if url is empty then return default question/notification image.
+     * @return url of image or url of default image.
      */
     Q_INVOKABLE QString img() const;
+
+
+    /**
+     * @brief imgSrc This method return url to image of a question/notification object.
+     * @return url of image.
+     */
+    QString imgSrc() const;
 
     /**
      * @brief title This method return title of a question/notification object.
@@ -78,6 +85,8 @@ public:
     bool operator !=(const NotificationData &righ);
 
 private:
+    QString getDefaultImage(const int code) const;
+
     QString _text;
     QString _img;
     QString _title;

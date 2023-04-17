@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright (C) 2018-2023 QuasarApp.
  * Distributed under the GPLv3 software license, see the accompanying
  * Everyone is permitted to copy and distribute verbatim copies
@@ -23,6 +23,14 @@ QString NotificationData::text() const {
 }
 
 QString NotificationData::img() const {
+    const QString imageSrc = imgSrc();
+    if(imageSrc.size())
+      return imageSrc;
+
+    return this->getDefaultImage(_type);
+}
+
+QString NotificationData::imgSrc() const {
     return _img;
 }
 
@@ -39,6 +47,22 @@ bool NotificationData::operator ==(const NotificationData &righ) {
 
 bool NotificationData::operator !=(const NotificationData &righ) {
     return !operator==(righ);
+}
+
+QString NotificationData::getDefaultImage(const int code) const {
+
+    const auto notificationType = static_cast<NotificationData::Type>(code);
+
+    switch (notificationType) {
+    case NotificationData::Type::Normal:
+        return "qrc:/icons/info";
+    case NotificationData::Type::Warning:
+        return "qrc:/icons/warning";
+    case NotificationData::Type::Error:
+        return "qrc:/icons/error";
+    default:
+        return "";
+    }
 }
 
 int NotificationData::type() const {

@@ -8,4 +8,19 @@
         <translation>Message</translation>
     </message>
 </context>
+<context>
+    <name>NotificationHistoryView</name>
+    <message>
+        <source>Notifications</source>
+        <translation>Notifications</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Delete</translation>
+    </message>
+    <message>
+        <source>clear</source>
+        <translation>clear</translation>
+    </message>
+</context>
 </TS>

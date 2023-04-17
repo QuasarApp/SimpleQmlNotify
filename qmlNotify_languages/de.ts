@@ -8,4 +8,19 @@
         <translation>Botschaft</translation>
     </message>
 </context>
+<context>
+    <name>NotificationHistoryView</name>
+    <message>
+        <source>Notifications</source>
+        <translation>Benachrichtigungen</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+    <message>
+        <source>clear</source>
+        <translation>klare</translation>
+    </message>
+</context>
 </TS>

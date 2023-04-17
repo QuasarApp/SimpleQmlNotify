@@ -73,4 +73,19 @@ Item {
             questionMsgBox._show();
         }
     }
+
+    NotificationHistoryView {
+        id: history
+        width: Math.min(Math.max(Math.min(parent.width * 0.6, 1024 ), 320), parent.width)
+        height: Math.min(Math.max(Math.min(parent.height * 0.6, 720), 240), parent.height)
+
+        anchors.centerIn: parent
+    }
+
+    Connections {
+        target: model
+        function onSigShowHistory() {
+            history.open()
+        }
+    }
 }

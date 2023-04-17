@@ -9,9 +9,11 @@
 #define NOTIFICATIONSERVICE_H
 
 #include "notificationdata.h"
+#include "historynotificationsmodel.h"
 
 #include <QHash>
 #include <QObject>
+#include <QQmlEngine>
 
 namespace QmlNotificationService {
 
@@ -30,7 +32,9 @@ class NOTIFYSERVICESHARED_EXPORT NotificationService: public QObject
     Q_PROPERTY(NotificationData notify READ notify NOTIFY notifyChanged)
     Q_PROPERTY(NotificationData question READ question NOTIFY questionChanged)
 
-    Q_PROPERTY(QList<NotificationData> history READ history NOTIFY notifyChanged)
+    Q_PROPERTY(QObject* history READ history NOTIFY notifyChanged)
+
+    Q_PROPERTY(int notificationsCount READ notificationsCount NOTIFY countNotificationsChanged)
 
 public:
     /**
@@ -121,12 +125,26 @@ public:
     static NotificationService* getService();
 
     /**
-     * @brief history - This method used for return notify list.
-     * @return list of all notify.
+     * @brief history - This method used for return notify history model.
+     * @return history model of all notify.
      */
-    const QList<NotificationData> & history() const;
+     QObject* history() const;
 
-signals:
+    /**
+     * @brief showHistory - This method used for emit signal by which show notification menu.
+     */
+
+    Q_INVOKABLE void showHistory();
+
+     /**
+     * @brief notificationsCount - This method used for return count of history notifications.
+     * @return count of history notifications.
+     */
+    Q_INVOKABLE int notificationsCount() const;
+
+     ~NotificationService();
+
+ signals:
     /**
      * @brief notifyChanged This signal emited whet the notificator (Ths object) received a new notification message.
      */
@@ -145,14 +163,21 @@ signals:
      */
     void questionCompleted(bool accepted, int questionCode);
 
+    void historyListChanged();
+
+    void sigShowHistory();
+
+    void countNotificationsChanged();
+
 private:
 
     explicit NotificationService(QObject *ptr = nullptr);
 
+
     QHash<int, Listner> _listners;
     NotificationData _question;
     NotificationData _notify;
-    QList<NotificationData> _history;
+    HistoryNotificationsModel* _history = nullptr;
 };
 
 }
