@@ -14,6 +14,7 @@ Dialog {
         ToolButton {
             id: clearAllButton
             text: qsTr("clear")
+            font.pointSize: 10
             height: parent.height
             anchors {
                 left: parent.left
