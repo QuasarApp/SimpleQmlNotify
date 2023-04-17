@@ -12,15 +12,15 @@
     <name>NotificationHistoryView</name>
     <message>
         <source>Notification history</source>
-        <translation type="unfinished"></translation>
+        <translation>通知履歴</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>消去</translation>
     </message>
     <message>
         <source>clear</source>
-        <translation type="unfinished"></translation>
+        <translation>クリア通知</translation>
     </message>
 </context>
 </TS>

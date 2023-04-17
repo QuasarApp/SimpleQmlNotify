@@ -12,15 +12,15 @@
     <name>NotificationHistoryView</name>
     <message>
         <source>Notification history</source>
-        <translation type="unfinished"></translation>
+        <translation>Historia powiadomień</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuwać</translation>
     </message>
     <message>
         <source>clear</source>
-        <translation type="unfinished"></translation>
+        <translation>wyczyść</translation>
     </message>
 </context>
 </TS>
