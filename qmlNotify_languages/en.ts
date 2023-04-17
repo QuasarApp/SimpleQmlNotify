@@ -11,8 +11,8 @@
 <context>
     <name>NotificationHistoryView</name>
     <message>
-        <source>Notification history</source>
-        <translation>Notification history</translation>
+        <source>Notifications</source>
+        <translation>Notifications</translation>
     </message>
     <message>
         <source>Delete</source>

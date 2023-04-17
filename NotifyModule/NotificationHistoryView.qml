@@ -14,7 +14,6 @@ Dialog {
         ToolButton {
             id: clearAllButton
             text: qsTr("clear")
-            font.pointSize: 10
             height: parent.height
             anchors {
                 left: parent.left
@@ -26,7 +25,7 @@ Dialog {
 
         Label {
             id: toolbarTitle
-            text: qsTr("Notification history")
+            text: qsTr("Notifications")
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 verticalCenter: parent.verticalCenter
