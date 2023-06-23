@@ -8,6 +8,10 @@ Dialog {
 
     readonly property var historyModel: notificationService.history
 
+    background: Rectangle {
+        color: Material.background
+    }
+
     header: ToolBar {
         id: toolbar
 
