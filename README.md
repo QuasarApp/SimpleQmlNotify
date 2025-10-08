@@ -1,7 +1,8 @@
 # Warning 
 ## This repository deprecated and arrived. All functions included in the ViewSolutions library. See [ViewSoultions PR](https://github.com/QuasarApp/ViewSolutions/pull/12)
 
-===
+---
+
 # SimpleQmlNotify
 Simple Qml notification service for qml applications.
 
